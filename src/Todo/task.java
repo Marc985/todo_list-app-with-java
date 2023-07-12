@@ -4,22 +4,20 @@ public class task {
     //COnnection to postgresql
 
 
+String description;
+String date;
 
-    //Create statment
+    public task(String description, String date) {
+        this.description = description;
+        this.date = date;
 
+    }
 
-        String password=System.getenv("db_password");
-        ConnectionDB conn=ConnectionDB.getInstance("postgres",password,"todo_list");
-        ExecuteQuery stat=ExecuteQuery.getInstanceExecution(conn);
-     public  void taskInsert(){
-         try{
-             String insert="insert into task values (1,'faire qqch','2023-09-12')";
-             stat.getStatement().executeUpdate(insert);
-             System.out.println("insertion fait avec succes");
-         }
-         catch (Exception e){
-             e.printStackTrace();
-         }
-     }
+    @Override
+    public String toString() {
+        return "todo'" + description + '\'' +
+                ",deadline'" + date + '\'';
+    }
+
 
 }
