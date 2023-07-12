@@ -53,6 +53,7 @@ public class UserTask {
                         String update = scanner.nextLine();
                         user.updateDeadline(update, num);
                     }
+
                     break;
                 case 4:
                     System.out.println("vous voulez supprimer la tache numero:");
