@@ -25,9 +25,10 @@ public class userRequests {
        task tache;
        List<task> tacheList=new ArrayList<>();
         try{
-            String select="select description,deadline from task";
+            String select="select id,description,deadline from task";
             ResultSet result=stat.getStatement().executeQuery(select);
             while (result.next()){
+
                 String desc=result.getString("description");
                 String deadline=result.getString("deadline");
                 tache=new task(desc,deadline);
