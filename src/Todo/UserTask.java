@@ -36,19 +36,21 @@ public class UserTask {
                     user.insertTask(task, date);
                     break;
                 case 3:
-                    System.out.println("vous souhaitez mettre à jour une tache ou le deadline?");
-                    String response = scanner.nextLine();
-                    if (response.equals("tache")) {
+                    System.out.println("vous souhaitez mettre à jour une tache ou le deadline?...tapez 1 pour la tache 2 pour le deadline");
+                    int response = scanner.nextInt();
+                    if (response==1) {
                         System.out.println("vous voulez mettre à jour la tache numero:");
                         int num = scanner.nextInt();
+                        scanner.nextLine();
                         System.out.println("Votre mis à jour:");
                         String update = scanner.nextLine();
                         user.updateTask(update, num);
 
                     }
-                    if (response.equals("deadline")) {
+                    if (response==2) {
                         System.out.println("vous voulez mettre à jour le deadline dans la tache numero:");
                         int num = scanner.nextInt();
+                        scanner.nextLine();
                         System.out.println("Votre mis à jour:");
                         String update = scanner.nextLine();
                         user.updateDeadline(update, num);
