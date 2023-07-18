@@ -3,16 +3,18 @@ package Todo;
 import java.sql.Statement;
 
 public class ExecuteQuery {
-    private static ExecuteQuery instance;
+
     private ConnectionDB connectiondb;
     private Statement statement;
 
-    private  ExecuteQuery(ConnectionDB connectiondb) {
-        this.connectiondb = connectiondb;
+    public ExecuteQuery() {
         createStmt();
     }
+
     private void createStmt(){
         try{
+            String password=System.getenv("db_password");
+            connectiondb=ConnectionDB.getInstance("postgres",password,"todo_list");
             statement=this.connectiondb.getConnection().createStatement();
 
         }
@@ -21,11 +23,7 @@ public class ExecuteQuery {
         }
     }
 
-    public static ExecuteQuery getInstanceExecution(ConnectionDB connectiondb){
-        if(instance==null)
-            instance=new ExecuteQuery(connectiondb);
-        return instance;
-    }
+
 
     public Statement getStatement() {
         return statement;

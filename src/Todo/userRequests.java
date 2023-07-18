@@ -1,22 +1,26 @@
 package Todo;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class userRequests {
-    String password=System.getenv("db_password");
-    ConnectionDB conn=ConnectionDB.getInstance("postgres",password,"todo_list");
-    ExecuteQuery stat=ExecuteQuery.getInstanceExecution(conn);
+
+    ExecuteQuery stat=new ExecuteQuery();
+
     //insert a task
     public void insertTask(String description,String deadline){
       try{
+
           String insert="insert into task (description,deadline) values ('"+description+"','"+deadline+"')";
           stat.getStatement().executeUpdate(insert);
           System.out.println("tache ajouter avec succes");
       }
-      catch (Exception e){
+      catch (SQLException e){
           e.printStackTrace();
       }
     }
